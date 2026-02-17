@@ -1,0 +1,7 @@
+{
+  "name": "Renay Brener Beauty Studio",
+  "description": "Premium beauty services specializing in hair braiding, nail technology, and bespoke lash extensions. Featuring an AI beauty consultant for personalized style recommendations.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
