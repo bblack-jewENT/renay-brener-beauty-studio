@@ -1,4 +1,3 @@
-
 import { GoogleGenAI, GenerateContentResponse } from "@google/genai";
 
 const SYSTEM_INSTRUCTION = `
@@ -17,18 +16,23 @@ Your goal is to:
 - Keep responses relatively concise but informative.
 `;
 
-export async function getBeautyAdvice(prompt: string, history: {role: 'user' | 'model', text: string}[] = []) {
+export async function getBeautyAdvice(
+  prompt: string,
+  history: { role: "user" | "model"; text: string }[] = [],
+) {
   try {
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || "" });
     const chat = ai.chats.create({
-      model: 'gemini-3-flash-preview',
+      model: "gemini-3-flash-preview",
       config: {
         systemInstruction: SYSTEM_INSTRUCTION,
       },
     });
 
     // Send the message
-    const response: GenerateContentResponse = await chat.sendMessage({ message: prompt });
+    const response: GenerateContentResponse = await chat.sendMessage({
+      message: prompt,
+    });
     return response.text;
   } catch (error) {
     console.error("Gemini API Error:", error);

@@ -19,7 +19,7 @@ const AIConsultant: React.FC = () => {
 
   const handleSend = async () => {
     if (!input.trim() || isLoading) return;
-
+ 
     const userMsg = input.trim();
     setInput('');
     setMessages(prev => [...prev, { role: 'user', text: userMsg }]);
